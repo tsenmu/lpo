@@ -235,7 +235,7 @@ void tentFilter( float * r, const float * im, int W, int H, int C, float r2 ) {
 
 	for( int j=0; j<H; j++ ) {
 		tx( r+j*W*C, sm2, W, r2, nm );
-		strideAddAddDiffSSE( sm2, sm, im+(2*H-1-abs(2*H-2*(j+r2+1)-1))/2*W*C, im+abs(2*(j-r2-1)+1)/2*W*C, im+j*W*C, W*C );
+		strideAddAddDiffSSE( sm2, sm, im+int((2*H-1-abs(2*H-2*(j+r2+1)-1))/2*W*C), im+int(abs(2*(j-r2-1)+1)/2*W*C), im+j*W*C, W*C );
 	}
 	_mm_free( sm );
 	_mm_free( sm2 );

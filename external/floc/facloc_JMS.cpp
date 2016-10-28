@@ -77,7 +77,7 @@ bool UNCAP_FACILITY_LOCATION_JMS(const double *open_cost, const double *cost_mat
     city = order[cnt] % cities;
     
     // here we determine the 'time' of the next edge
-    next_cost = (cnt < (edges-1)) ? cost_matrix[order[cnt+1]] : HUGE;
+    next_cost = (cnt < (edges-1)) ? cost_matrix[order[cnt+1]] : HUGE_VAL;
     
     // If the city is still unconnected...
     if (connected[city] == -1) {

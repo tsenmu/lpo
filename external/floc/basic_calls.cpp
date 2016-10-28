@@ -116,7 +116,7 @@ bool test_metric(const double *cost_matrix, const int facilities, const int citi
 
   for (a = 0; a < locations; a++)
     for (b = 0; b < locations; b++) {
-      shorty[(a*locations)+b] = HUGE;
+      shorty[(a*locations)+b] = HUGE_VAL;
       if (buildway) inter[(a*locations)+b] = -1;    
     }
 

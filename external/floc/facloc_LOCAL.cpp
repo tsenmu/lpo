@@ -115,7 +115,7 @@ void update_queue(const double *cost_matrix, const int facilities, const int cit
         // We only close a facility, when at least two were opened...
         best_old[0] = cost_matrix[(queues[start+1]*cities) + j];
         best_old[1] = cost_matrix[(queues[start+2]*cities) + j];
-        best_old[2] = (queues[0] > 1) ? cost_matrix[(queues[start+3]*cities) + j] : HUGE;
+        best_old[2] = (queues[0] > 1) ? cost_matrix[(queues[start+3]*cities) + j] : HUGE_VAL;
         
         std::sort(best_old, best_old+3);
       }
@@ -135,8 +135,8 @@ void update_queue(const double *cost_matrix, const int facilities, const int cit
       if (examcosts) {
         // When closing a facility we must have at least one open left
         best_new[0] = cost_matrix[(queues[start+1]*cities) + j];
-        best_new[1] = (queues[0] > 1) ? cost_matrix[(queues[start+2]*cities) + j] : HUGE;
-        best_new[2] = (queues[0] > 2) ? cost_matrix[(queues[start+3]*cities) + j] : HUGE;
+        best_new[1] = (queues[0] > 1) ? cost_matrix[(queues[start+2]*cities) + j] : HUGE_VAL;
+        best_new[2] = (queues[0] > 2) ? cost_matrix[(queues[start+3]*cities) + j] : HUGE_VAL;
         
         std::sort(best_new, best_new+3);
         
@@ -167,9 +167,9 @@ void update_queue(const double *cost_matrix, const int facilities, const int cit
       if (examcosts) {
         // As the number of opened facilities has already been adjusted...
         // We only close a facility, when at least two were opened...
-        best_old[0] = (queues[0] > 1) ? cost_matrix[(queues[start+1]*cities) + j] : HUGE;
-        best_old[1] = (queues[0] > 2) ? cost_matrix[(queues[start+2]*cities) + j] : HUGE;
-        best_old[2] = (queues[0] > 3) ? cost_matrix[(queues[start+3]*cities) + j] : HUGE;
+        best_old[0] = (queues[0] > 1) ? cost_matrix[(queues[start+1]*cities) + j] : HUGE_VAL;
+        best_old[1] = (queues[0] > 2) ? cost_matrix[(queues[start+2]*cities) + j] : HUGE_VAL;
+        best_old[2] = (queues[0] > 3) ? cost_matrix[(queues[start+3]*cities) + j] : HUGE_VAL;
         
         std::sort(best_old, best_old+3);
       }
@@ -183,8 +183,8 @@ void update_queue(const double *cost_matrix, const int facilities, const int cit
       if (examcosts) {
         // There is one that was opened just now
         best_new[0] = cost_matrix[(queues[start+1]*cities) + j];
-        best_new[1] = (queues[0] > 1) ? cost_matrix[(queues[start+2]*cities) + j] : HUGE;
-        best_new[2] = (queues[0] > 2) ? cost_matrix[(queues[start+3]*cities) + j] : HUGE;
+        best_new[1] = (queues[0] > 1) ? cost_matrix[(queues[start+2]*cities) + j] : HUGE_VAL;
+        best_new[2] = (queues[0] > 2) ? cost_matrix[(queues[start+3]*cities) + j] : HUGE_VAL;
         
         std::sort(best_new, best_new+3);
         
@@ -609,7 +609,7 @@ bool UNCAP_FACILITY_LOCATION_LOCAL_RUN(const double *open_cost, const double *co
      the gains. If we need to apply an exchange move we apply a switch and check every possible 
      switch afterwards. If there's not enough improvement we recover the situation. */
 
-  cost = realcost = HUGE;
+  cost = realcost = HUGE_VAL;
 
   while (!exit_loop) {
 

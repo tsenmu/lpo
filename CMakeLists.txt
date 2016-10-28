@@ -1,4 +1,10 @@
 cmake_minimum_required(VERSION 2.8)
+
+set(CMAKE_C_COMPILER "gcc-6")
+set(CMAKE_CXX_COMPILER "g++-6")
+
+set(BOOST_ROOT "/usr/local/opt/boost159")
+
 project( lpo )
 set( CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} ${CMAKE_CURRENT_SOURCE_DIR}/cmake )
 
